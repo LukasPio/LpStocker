@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS Product (
                                        product_name VARCHAR(255) NOT NULL UNIQUE,
                                        product_price DECIMAL(10, 2) NOT NULL,
                                        product_description VARCHAR(255) NOT NULL,
-                                       product_category ENUM('Electronics', 'Books', 'Clothing', 'Toys', 'other') NOT NULL
+                                       product_category ENUM('Electronics', 'Books', 'Clothing', 'Toys', 'Other') NOT NULL
 );
 
 -- Create table Stock
