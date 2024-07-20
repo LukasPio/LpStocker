@@ -7,7 +7,7 @@ import lombok.Setter;
 import java.math.BigInteger;
 
 @Entity
-@Table
+@Table(name = "Stock")
 @Getter
 @Setter
 public class StockModel {
