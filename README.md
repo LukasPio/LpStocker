@@ -547,4 +547,4 @@ The **Stock Manager API** is a robust solution developed in Java with Spring Boo
 - **Java 17**: Programming language for the backend.
 - **Spring Boot 3.3.2**: Framework for building the REST API.
 - **MySQL 8.4.1**: Database for storing product and inventory data.
-- **Docker**: Technologie for containerizing and managing the database.
+- **Docker 27.0.3**: Technologie for containerizing and managing the database.
