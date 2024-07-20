@@ -2,8 +2,12 @@ package com.lucas.stockManager.model;
 
 import com.lucas.stockManager.helpers.ProductStockId;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
+@Getter
+@Setter
 public class ProductStock {
     @EmbeddedId
     private ProductStockId id;
