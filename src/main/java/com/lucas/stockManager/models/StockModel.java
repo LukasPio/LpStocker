@@ -1,4 +1,4 @@
-package com.lucas.stockManager.model;
+package com.lucas.stockManager.models;
 
 import jakarta.persistence.*;
 import lombok.Getter;
