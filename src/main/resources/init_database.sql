@@ -1,7 +1,9 @@
+CREATE DATABASE IF NOT EXISTS LpStocker;
+
 USE LpStocker;
 
 -- Create table Product
-CREATE TABLE IF NOT EXISTS Product (
+CREATE TABLE IF NOT EXISTS product (
                                        product_id BIGINT AUTO_INCREMENT PRIMARY KEY,
                                        product_name VARCHAR(255) NOT NULL UNIQUE,
                                        product_price DECIMAL(10, 2) NOT NULL,
@@ -10,7 +12,7 @@ CREATE TABLE IF NOT EXISTS Product (
 );
 
 -- Create table Stock
-CREATE TABLE IF NOT EXISTS Stock (
+CREATE TABLE IF NOT EXISTS stock (
                                      stock_id BIGINT AUTO_INCREMENT PRIMARY KEY,
                                      stock_name VARCHAR(255) NOT NULL UNIQUE,
                                      stock_totalcapacity BIGINT NOT NULL,
@@ -18,11 +20,11 @@ CREATE TABLE IF NOT EXISTS Stock (
 );
 
 -- Create table ProductStock
-CREATE TABLE IF NOT EXISTS ProductStock (
+CREATE TABLE IF NOT EXISTS productStock (
                                             product_id BIGINT NOT NULL,
                                             stock_id BIGINT NOT NULL,
                                             quantity INTEGER NOT NULL,
                                             PRIMARY KEY (product_id, stock_id),
-                                            FOREIGN KEY (product_id) REFERENCES Product(product_id) ON DELETE CASCADE,
-                                            FOREIGN KEY (stock_id) REFERENCES Stock(stock_id) ON DELETE CASCADE
+                                            FOREIGN KEY (product_id) REFERENCES product(product_id) ON DELETE CASCADE,
+                                            FOREIGN KEY (stock_id) REFERENCES stock(stock_id) ON DELETE CASCADE
 );
