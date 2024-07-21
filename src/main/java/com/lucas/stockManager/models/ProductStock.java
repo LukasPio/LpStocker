@@ -13,8 +13,8 @@ public class ProductStock {
     private ProductStockId id;
 
     @ManyToOne
-    @MapsId("product_id")
-    @JoinColumn(name = "stock_id")
+    @MapsId("productId")
+    @JoinColumn(name = "product_id")
     private ProductModel product;
 
     @ManyToOne
@@ -24,6 +24,4 @@ public class ProductStock {
 
     @Column(nullable = false)
     private Integer quantity;
-
-
 }
