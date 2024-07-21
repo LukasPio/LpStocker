@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import java.io.Serializable;
 
+@Setter
+@Getter
 @AllArgsConstructor
 @NoArgsConstructor
 @Embeddable
