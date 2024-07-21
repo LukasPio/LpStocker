@@ -9,7 +9,7 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 
 @Entity
-@Table(name = "Product")
+@Table(name = "product")
 @Getter
 @Setter
 public class ProductModel {
