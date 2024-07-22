@@ -19,7 +19,7 @@ public class ProductController {
     }
 
     @GetMapping
-    public ResponseEntity<List<ProductResponseDTO>> getProducts() {
+    public ResponseEntity<List<ProductResponseDTO>> getAllProducts() {
         return productService.getAllProducts();
     }
 }
