@@ -1,6 +1,6 @@
 # Stock Manager API
 
-The **Stock Manager API** is a robust solution developed in Java with Spring Boot for managing inventory in e-commerce platforms. Utilizing MySQL as the database, the API allows for the creation, retrieval, update, and deletion of information related to products, inventory, and associations between products and inventories.
+The **LpStocker** is a robust solution developed in Java with Spring Boot for managing inventory in e-commerce platforms. Utilizing MySQL as the database, the API allows for the creation, retrieval, update, and deletion of information related to products, inventory, and associations between products and inventories.
 
 ---
 
