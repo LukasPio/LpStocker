@@ -18,4 +18,9 @@ public class ProductController {
     public <T> ResponseEntity<?> getAllProducts() {
         return productService.getAllProducts();
     }
+
+    @PostMapping
+    public <T> ResponseEntity<?> saveProduct(@RequestBody ProductRequestDTO productData) {
+        return productService.saveProduct(productData);
+    }
 }
