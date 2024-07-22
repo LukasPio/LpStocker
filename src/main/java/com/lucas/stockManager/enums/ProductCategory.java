@@ -1,7 +1,7 @@
 package com.lucas.stockManager.enums;
 
 public enum ProductCategory {
-    ELETRONICS,
+    ELECTRONICS,
     BOOKS,
     CLOTHING,
     TOYS,
