@@ -17,10 +17,15 @@ import java.math.BigInteger;
 public class ProductModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "product_id")
     private BigInteger id;
+    @Column(name = "product_name")
     private String name;
+    @Column(name = "product_description")
     private String description;
+    @Column(name = "product_price")
     private BigDecimal price;
+    @Column(name = "product_category")
     private String category;
 
     public ProductModel(ProductRequestDTO productData) {
