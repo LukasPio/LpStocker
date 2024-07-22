@@ -1,7 +1,6 @@
 package com.lucas.stockManager.models;
 
 import com.lucas.stockManager.dtos.ProductRequestDTO;
-import com.lucas.stockManager.enums.ProductCategory;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
