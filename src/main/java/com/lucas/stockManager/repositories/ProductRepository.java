@@ -8,4 +8,5 @@ import java.math.BigInteger;
 
 @Repository
 public interface ProductRepository extends JpaRepository<ProductModel, BigInteger> {
+    boolean existsByName(String name);
 }
