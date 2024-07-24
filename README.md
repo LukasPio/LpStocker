@@ -4,7 +4,7 @@ The **LpStocker** is a robust solution developed in Java with Spring Boot for ma
 
 ---
 
-## Table of Contents
+## Readme Sumary
 
 - [Key Features](#key-features)
   - [Product Management](#product-management)
