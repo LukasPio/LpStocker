@@ -44,9 +44,9 @@ public class ProductService {
                     null
         );
 
-        if (productData.isValidCategory()) return responseService.buildResponse(
+        if (!productData.isValidCategory()) return responseService.buildResponse(
                     HttpStatus.BAD_REQUEST.value(),
-                    "The category entered is invalid.",
+                    "The category " + productData.category() + " is not valid.",
                     null
         );
 
