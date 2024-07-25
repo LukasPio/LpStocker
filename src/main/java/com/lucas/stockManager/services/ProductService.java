@@ -31,7 +31,7 @@ public class ProductService {
         return ResponseEntity.ok(productResponseDTOS);
     }
 
-    public <T> ResponseEntity<?> saveProduct(ProductRequestDTO productData) {
+    public ResponseEntity<?> saveProduct(ProductRequestDTO productData) {
         if (productData == null) return responseService.buildResponse(
                     HttpStatus.BAD_REQUEST.value(),
                     "Any field of productRequest can be null.",
