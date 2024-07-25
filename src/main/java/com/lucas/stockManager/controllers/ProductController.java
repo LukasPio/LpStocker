@@ -21,6 +21,11 @@ public class ProductController {
         return productService.getAllProducts();
     }
 
+    @GetMapping(path = "/{productId}")
+    public ResponseEntity<?> getProductById(@PathVariable BigInteger productId) {
+        return productService.getProductById(productId);
+    }
+
     @PostMapping
     public ResponseEntity<?> saveProduct(@RequestBody ProductRequestDTO productData) {
         return productService.saveProduct(productData);
