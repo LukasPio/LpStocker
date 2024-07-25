@@ -85,4 +85,31 @@ public class ProductService {
                 new ProductResponseDTO(productToDelete)
         );
     }
+
+    public ResponseEntity<?> updateProduct(BigInteger productId, ProductRequestDTO productData) {
+        ProductModel productToUpdate = productRepository.findById(productId).orElse(null);
+        if (productToUpdate == null) return responseService.buildResponse(
+                HttpStatus.BAD_REQUEST.value(),
+                "Any product with id " + productId + " is present on database",
+                null
+        );
+
+        if (!productData.isValidCategory()) return responseService.buildResponse(
+                HttpStatus.BAD_REQUEST.value(),
+                "The category " + productData.category() + " is not valid.",
+                null
+        );
+
+        productToUpdate.setName(productData.name());
+        productToUpdate.setDescription(productData.description());
+        productToUpdate.setPrice(productData.price());
+        productToUpdate.setCategory(productData.category());
+
+        productRepository.save(productToUpdate);
+        return responseService.buildResponse(
+                HttpStatus.OK.value(),
+                "Product was updated successfully",
+                new ProductResponseDTO(productToUpdate)
+        );
+    }
 }
