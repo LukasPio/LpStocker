@@ -4,10 +4,12 @@ import com.lucas.stockManager.dtos.ProductRequestDTO;
 import com.lucas.stockManager.dtos.ProductResponseDTO;
 import com.lucas.stockManager.models.ProductModel;
 import com.lucas.stockManager.repositories.ProductRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.math.BigInteger;
 import java.util.List;
 
 @Service
@@ -64,6 +66,22 @@ public class ProductService {
                 HttpStatus.CREATED.value(),
                 "Product was saved succesfully.",
                 new ProductResponseDTO(toSave)
+        );
+    }
+    @Transactional
+    public ResponseEntity<?> deleteProduct(BigInteger productId) {
+        ProductModel productToDelete = productRepository.findById(productId).orElse(null);
+        if (productToDelete == null) return responseService.buildResponse(
+                HttpStatus.BAD_REQUEST.value(),
+                "Any product with id " + productId + " is present on database",
+                null
+        );
+
+        productRepository.deleteById(productId);
+        return responseService.buildResponse(
+                HttpStatus.NO_CONTENT.value(),
+                "Product deleted succesfully",
+                new ProductResponseDTO(productToDelete)
         );
     }
 }
