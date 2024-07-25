@@ -5,6 +5,8 @@ import com.lucas.stockManager.services.ProductService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigInteger;
+
 @RestController
 @RequestMapping(("/api/products"))
 public class ProductController {
@@ -22,5 +24,10 @@ public class ProductController {
     @PostMapping
     public ResponseEntity<?> saveProduct(@RequestBody ProductRequestDTO productData) {
         return productService.saveProduct(productData);
+    }
+
+    @DeleteMapping(path = "/{productId}")
+    public ResponseEntity<?> deleteProduct(@PathVariable BigInteger productId) {
+        return productService.deleteProduct(productId);
     }
 }
