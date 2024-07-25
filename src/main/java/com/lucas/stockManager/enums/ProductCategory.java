@@ -15,13 +15,4 @@ public enum ProductCategory {
     ProductCategory(String category) {
         this.category = category;
     }
-
-    public static boolean isValidCategory(String category) {
-        for (ProductCategory c : ProductCategory.values()) {
-            if (c.getCategory().equalsIgnoreCase(category)) {
-                return true;
-            }
-        }
-        return false;
-    }
 }
