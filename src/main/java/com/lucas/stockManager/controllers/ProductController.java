@@ -15,12 +15,12 @@ public class ProductController {
     }
 
     @GetMapping
-    public <T> ResponseEntity<?> getAllProducts() {
+    public ResponseEntity<?> getAllProducts() {
         return productService.getAllProducts();
     }
 
     @PostMapping
-    public <T> ResponseEntity<?> saveProduct(@RequestBody ProductRequestDTO productData) {
+    public ResponseEntity<?> saveProduct(@RequestBody ProductRequestDTO productData) {
         return productService.saveProduct(productData);
     }
 }
