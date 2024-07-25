@@ -22,13 +22,21 @@ public class ProductService {
         this.responseService = responseService;
     }
 
-    public <T> ResponseEntity<?> getAllProducts() {
+    public ResponseEntity<?> getAllProducts() {
         List<ProductModel> products = productRepository.findAll();
-        List<ProductResponseDTO> productResponseDTOS = new ArrayList<>();
-        for (ProductModel product : products) {
-            productResponseDTOS.add(new ProductResponseDTO(product));
+        if (products.isEmpty()) {
+            return responseService.buildResponse(
+                    204,
+                    "There aren't any saved products in database.",
+                    null
+            );
         }
-        return ResponseEntity.ok(productResponseDTOS);
+        List<ProductResponseDTO> productResponseDTOS = products.stream().map(ProductResponseDTO::new).toList();
+        return responseService.buildResponse(
+                200,
+                "Get all products successfully",
+                productResponseDTOS
+        );
     }
 
     public ResponseEntity<?> saveProduct(ProductRequestDTO productData) {
