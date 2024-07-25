@@ -41,7 +41,8 @@ public class ProductService {
         if (productData.isAnyCampNull()) return responseService.buildResponse(
                     HttpStatus.BAD_REQUEST.value(),
                     "Any field of productRequest can be null.",
-                    null);
+                    null
+        );
 
         if (productData.isValidCategory()) return responseService.buildResponse(
                     HttpStatus.BAD_REQUEST.value(),
