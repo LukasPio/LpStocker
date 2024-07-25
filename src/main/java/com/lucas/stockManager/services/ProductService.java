@@ -112,4 +112,18 @@ public class ProductService {
                 new ProductResponseDTO(productToUpdate)
         );
     }
+
+    public ResponseEntity<?> getProductById(BigInteger productId) {
+        ProductModel product = productRepository.findById(productId).orElse(null);
+        if (product == null) return responseService.buildResponse(
+                HttpStatus.BAD_REQUEST.value(),
+                "There aren't product with id: "+ productId +" saved in database.",
+                null
+        );
+        return responseService.buildResponse(
+                HttpStatus.OK.value(),
+                "Product was got successfully",
+                new ProductResponseDTO(product)
+        );
+    }
 }
