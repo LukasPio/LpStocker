@@ -1,6 +1,5 @@
 package com.lucas.stockManager.services;
 
-import com.lucas.stockManager.dtos.ProductResponseDTO;
 import com.lucas.stockManager.dtos.StockResponseDTO;
 import com.lucas.stockManager.models.StockModel;
 import com.lucas.stockManager.repositories.StockRepository;
@@ -27,11 +26,11 @@ public class StockService {
                     "There aren't saved stocks",
                     ""
             );
-        List<StockResponseDTO> productResponseDTOs = stocks.stream().map(StockResponseDTO::new).toList();
+        List<StockResponseDTO> stockResponseDTOs = stocks.stream().map(StockResponseDTO::new).toList();
         return responseService.buildResponse(
                 HttpStatus.OK.value(),
                 "Get all stocks successfully",
-                productResponseDTOs
+                stockResponseDTOs
         );
     }
 }
