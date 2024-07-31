@@ -27,7 +27,7 @@ public class ProductService {
         if (products.isEmpty()) {
             return responseService.buildResponse(
                     HttpStatus.NO_CONTENT.value(),
-                    "There aren't any saved products in database.",
+                    "There aren't any saved products in database",
                     null
             );
         }
@@ -42,20 +42,20 @@ public class ProductService {
     public ResponseEntity<?> saveProduct(ProductRequestDTO productData) {
         if (productData.isAnyCampNull()) return responseService.buildResponse(
                     HttpStatus.BAD_REQUEST.value(),
-                    "Any field of productRequest can be null.",
+                    "Any field of productRequest can be null",
                     null
         );
 
         if (!productData.isValidCategory()) return responseService.buildResponse(
                     HttpStatus.BAD_REQUEST.value(),
-                    "The category " + productData.category() + " is not valid.",
+                    "The category " + productData.category() + " is not valid",
                     null
         );
 
         if (productRepository.existsByName(productData.name()))
             return responseService.buildResponse(
                     HttpStatus.CONFLICT.value(),
-                    "Already exists a product with that name.",
+                    "Already exists a product with that name",
                     null
             );
 
@@ -64,7 +64,7 @@ public class ProductService {
 
         return responseService.buildResponse(
                 HttpStatus.CREATED.value(),
-                "Product was saved succesfully.",
+                "Product was saved succesfully",
                 new ProductResponseDTO(toSave)
         );
     }
@@ -96,7 +96,7 @@ public class ProductService {
 
         if (!productData.isValidCategory()) return responseService.buildResponse(
                 HttpStatus.BAD_REQUEST.value(),
-                "The category " + productData.category() + " is not valid.",
+                "The category " + productData.category() + " is not valid",
                 null
         );
 
@@ -117,7 +117,7 @@ public class ProductService {
         ProductModel product = productRepository.findById(productId).orElse(null);
         if (product == null) return responseService.buildResponse(
                 HttpStatus.BAD_REQUEST.value(),
-                "There aren't product with id: "+ productId +" saved in database.",
+                "There aren't product with id: "+ productId +" saved in database",
                 null
         );
         return responseService.buildResponse(
