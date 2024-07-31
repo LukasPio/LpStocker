@@ -22,7 +22,7 @@ public class StockService {
     public ResponseEntity<?> getAllStocks() {
         List<StockModel> stocks = stockRepository.findAll();
         if (stocks.isEmpty()) return responseService.buildResponse(
-                    HttpStatus.NOT_FOUND.value(),
+                    HttpStatus.NO_CONTENT.value(),
                     "There aren't saved stocks",
                     ""
             );
