@@ -28,7 +28,7 @@ public class ProductService {
             return responseService.buildResponse(
                     HttpStatus.NO_CONTENT.value(),
                     "There aren't any saved products in database",
-                    null
+                    '.'
             );
         }
         List<ProductResponseDTO> productResponseDTOS = products.stream().map(ProductResponseDTO::new).toList();
@@ -43,20 +43,20 @@ public class ProductService {
         if (productData.isAnyCampNull()) return responseService.buildResponse(
                     HttpStatus.BAD_REQUEST.value(),
                     "Any field of productRequest can be null",
-                    null
+                ' '
         );
 
         if (!productData.isValidCategory()) return responseService.buildResponse(
                     HttpStatus.BAD_REQUEST.value(),
                     "The category " + productData.category() + " is not valid",
-                    null
+                ' '
         );
 
         if (productRepository.existsByName(productData.name()))
             return responseService.buildResponse(
                     HttpStatus.CONFLICT.value(),
                     "Already exists a product with that name",
-                    null
+                    ' '
             );
 
         ProductModel toSave = new ProductModel(productData);
@@ -75,7 +75,7 @@ public class ProductService {
         if (productToDelete == null) return responseService.buildResponse(
                 HttpStatus.BAD_REQUEST.value(),
                 "Any product with id " + productId + " is present on database",
-                null
+                ' '
         );
 
         productRepository.deleteById(productId);
@@ -91,13 +91,13 @@ public class ProductService {
         if (productToUpdate == null) return responseService.buildResponse(
                 HttpStatus.BAD_REQUEST.value(),
                 "Any product with id " + productId + " is present on database",
-                null
+                ' '
         );
 
         if (!productData.isValidCategory()) return responseService.buildResponse(
                 HttpStatus.BAD_REQUEST.value(),
                 "The category " + productData.category() + " is not valid",
-                null
+                ' '
         );
 
         productToUpdate.setName(productData.name());
@@ -118,7 +118,7 @@ public class ProductService {
         if (product == null) return responseService.buildResponse(
                 HttpStatus.BAD_REQUEST.value(),
                 "There aren't product with id: "+ productId +" saved in database",
-                null
+                ' '
         );
         return responseService.buildResponse(
                 HttpStatus.OK.value(),
