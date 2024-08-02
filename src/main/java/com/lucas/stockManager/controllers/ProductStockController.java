@@ -1,7 +1,6 @@
 package com.lucas.stockManager.controllers;
 
 import com.lucas.stockManager.services.ProductStockService;
-import com.lucas.stockManager.services.StockService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
