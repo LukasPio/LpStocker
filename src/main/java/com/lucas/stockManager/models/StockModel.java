@@ -19,7 +19,7 @@ public class StockModel {
     private BigInteger id;
     @Column(name = "stock_name")
     private String name;
-    @Column(name = "stock_totalcapacity")
+    @Column(name = "stock_totalCapacity")
     private BigInteger totalCapacity;
     @Column(name = "stock_currentOccupation")
     private BigInteger currentOccupation;
