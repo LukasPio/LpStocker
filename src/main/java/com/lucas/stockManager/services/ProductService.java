@@ -24,13 +24,11 @@ public class ProductService {
 
     public ResponseEntity<?> getAllProducts() {
         List<ProductModel> products = productRepository.findAll();
-        if (products.isEmpty()) {
-            return responseService.buildResponse(
+        if (products.isEmpty()) return responseService.buildResponse(
                     HttpStatus.NO_CONTENT.value(),
                     "There aren't any saved products in database",
                     '.'
             );
-        }
         List<ProductResponseDTO> productResponseDTOS = products.stream().map(ProductResponseDTO::new).toList();
         return responseService.buildResponse(
                 HttpStatus.OK.value(),
@@ -46,14 +44,13 @@ public class ProductService {
                 ' '
         );
 
-        if (!productData.isValidCategory()) return responseService.buildResponse(
+        if (productData.isInvalidCategory()) return responseService.buildResponse(
                     HttpStatus.BAD_REQUEST.value(),
                     "The category " + productData.category() + " is not valid",
                 ' '
         );
 
-        if (productRepository.existsByName(productData.name()))
-            return responseService.buildResponse(
+        if (productRepository.existsByName(productData.name())) return responseService.buildResponse(
                     HttpStatus.CONFLICT.value(),
                     "Already exists a product with that name",
                     ' '
@@ -94,7 +91,7 @@ public class ProductService {
                 ' '
         );
 
-        if (!productData.isValidCategory()) return responseService.buildResponse(
+        if (productData.isInvalidCategory()) return responseService.buildResponse(
                 HttpStatus.BAD_REQUEST.value(),
                 "The category " + productData.category() + " is not valid",
                 ' '
