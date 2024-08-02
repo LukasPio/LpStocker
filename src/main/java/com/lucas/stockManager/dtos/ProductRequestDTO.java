@@ -8,12 +8,9 @@ public record ProductRequestDTO(String name, BigDecimal price, String descriptio
     public boolean isAnyCampNull() {
         return name == null || price == null || description == null || category == null;
     }
-    public boolean isValidCategory() {
-            for (ProductCategory aCategory : ProductCategory.values()) {
-                if (aCategory.getCategory().equalsIgnoreCase(this.category)) {
-                    return true;
-                }
-            }
-            return false;
+    public boolean isInvalidCategory() {
+            for (ProductCategory aCategory : ProductCategory.values())
+                if (aCategory.getCategory().equalsIgnoreCase(this.category)) return false;
+            return true;
     }
 }
