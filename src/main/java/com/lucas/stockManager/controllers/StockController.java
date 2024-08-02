@@ -27,4 +27,14 @@ public class StockController {
     public ResponseEntity<?> saveStock(@RequestBody StockRequestDTO stockData) {
         return stockService.saveStock(stockData);
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<?> updateStock(@RequestBody StockRequestDTO stockData, @PathVariable BigInteger id) {
+        return stockService.updateStock(stockData, id);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteStock(@PathVariable BigInteger id) {
+        return stockService.deleteStock(id);
+    }
 }
