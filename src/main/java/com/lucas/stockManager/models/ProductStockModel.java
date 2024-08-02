@@ -6,9 +6,10 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
+@Table(name = "productStock")
 @Getter
 @Setter
-public class ProductStock {
+public class ProductStockModel {
     @EmbeddedId
     private ProductStockId id;
 
