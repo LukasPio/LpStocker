@@ -4,6 +4,7 @@ import com.lucas.stockManager.dtos.StockRequestDTO;
 import com.lucas.stockManager.dtos.StockResponseDTO;
 import com.lucas.stockManager.models.StockModel;
 import com.lucas.stockManager.repositories.StockRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -62,6 +63,47 @@ public class StockService {
                 HttpStatus.OK.value(),
                 "Stock was saved successfully",
                 stockData
+        );
+    }
+
+    public ResponseEntity<?> updateStock(StockRequestDTO stockData, BigInteger id) {
+        StockModel stock = stockRepository.findById(id).orElse(null);
+        if (stock == null) return responseService.buildResponse(
+                HttpStatus.BAD_REQUEST.value(),
+                "There aren't saved stocks with id: " + id,
+                ' '
+        );
+        if (stockData.isAnyCampNull()) return responseService.buildResponse(
+                HttpStatus.BAD_REQUEST.value(),
+                "Any camp of stock can be null",
+                ' '
+        );
+
+        stock.setName(stockData.name());
+        stock.setTotalCapacity(stockData.totalCapacity());
+        stock.setCurrentOccupation(stockData.currentOccupation());
+        stockRepository.save(stock);
+
+        return responseService.buildResponse(
+                HttpStatus.OK.value(),
+                "Update product with id " + id + " successfully",
+                new StockResponseDTO(stock)
+        );
+    }
+
+    @Transactional
+    public ResponseEntity<?> deleteStock(BigInteger id) {
+        StockModel stockModel = stockRepository.findById(id).orElse(null);
+        if (stockModel == null) return responseService.buildResponse(
+                HttpStatus.BAD_REQUEST.value(),
+                "There aren't stocks saved wit id: " + id,
+                ' '
+        );
+        stockRepository.delete(stockModel);
+        return responseService.buildResponse(
+                HttpStatus.OK.value(),
+                "Delete stock with id " + id + " successfully",
+                new StockResponseDTO(stockModel)
         );
     }
 }
