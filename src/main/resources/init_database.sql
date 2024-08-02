@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS product (
 CREATE TABLE IF NOT EXISTS stock (
                                      stock_id BIGINT AUTO_INCREMENT PRIMARY KEY,
                                      stock_name VARCHAR(255) NOT NULL UNIQUE,
-                                     stock_totalcapacity BIGINT NOT NULL,
+                                     stock_totalCapacity BIGINT NOT NULL,
                                      stock_currentOccupation BIGINT NOT NULL
 );
 
